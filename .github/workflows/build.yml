@@ -43,27 +43,19 @@ jobs:
       - name: Get current time
         id: time
         run: echo "time=$(date +'%Y%m%d%H%M')" >> $GITHUB_OUTPUT
-        
-      - name: Create a release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
+          name: ${{ steps.time.outputs.time }}
           tag_name: ${{ steps.time.outputs.time }}
-          release_name: ${{ steps.time.outputs.time }}
           draft: false
           prerelease: false
-      
-      - name: Release noncn.json
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./noncn.json
-          asset_name: noncn.json
-          asset_content_type: application/json
+          make_latest: true
+          files: |
+            noncn.json
+            gfw.json
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
