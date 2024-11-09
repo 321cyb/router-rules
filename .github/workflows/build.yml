@@ -34,8 +34,11 @@ jobs:
       - name: Download cn.txt file
         run: wget https://raw.githubusercontent.com/Loyalsoldier/geoip/refs/heads/release/surge/cn.txt -O cn.txt
 
+      - name: Download gfw.txt file
+        run: wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt -O gfw.txt
+
       - name: test
-        run: ls -l cn.txt
+        run: ls -l *.txt
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
