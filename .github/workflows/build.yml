@@ -27,15 +27,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: python3 convert.py
-        
       - name: Download cn.txt file
         run: wget https://raw.githubusercontent.com/Loyalsoldier/geoip/refs/heads/release/surge/cn.txt -O cn.txt
 
       - name: Download gfw.txt file
         run: wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt -O gfw.txt
+
+      # Runs a single command using the runners shell
+      - name: convert into json files: noncn.json and gfw.json
+        run: python3 convert.py
 
       - name: test
         run: ls -l *.txt
