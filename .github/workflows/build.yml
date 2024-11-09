@@ -31,6 +31,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: Download cn.txt file
+        run: wget https://raw.githubusercontent.com/Loyalsoldier/geoip/refs/heads/release/surge/cn.txt -O cn.txt
+
+      - name: test
+        run: ls -l cn.txt
+
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
