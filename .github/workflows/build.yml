@@ -36,9 +36,17 @@ jobs:
       - name: Download gfw.txt file
         run: wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt -O gfw.txt
 
-      # Runs a single command using the runners shell
       - name: convert into noncn.json and gfw.json
         run: python3 convert.py
+
+      - name: Download and extract singbox 1.10.1
+        run:
+          wget https://github.com/SagerNet/sing-box/releases/download/v1.10.1/sing-box-1.10.1-linux-amd64.tar.gz -O - | tar -zxf - -C ./
+
+      - name: Convert json files to SRS files
+        run: |
+          ./sing-box-1.10.1-linux-amd64/sing-box rule-set compile --output noncn.srs noncn.json
+          ./sing-box-1.10.1-linux-amd64/sing-box rule-set compile --output gfw.srs gfw.json
 
       - name: Get current time
         id: time
@@ -55,6 +63,8 @@ jobs:
           files: |
             noncn.json
             gfw.json
+            noncn.srs
+            gfw.srs
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
