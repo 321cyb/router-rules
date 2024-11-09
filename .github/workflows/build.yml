@@ -34,7 +34,7 @@ jobs:
         run: wget https://raw.githubusercontent.com/Loyalsoldier/v2ray-rules-dat/release/gfw.txt -O gfw.txt
 
       # Runs a single command using the runners shell
-      - name: convert into json files: noncn.json and gfw.json
+      - name: convert into noncn.json and gfw.json
         run: python3 convert.py
 
       - name: test
