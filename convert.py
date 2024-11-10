@@ -59,7 +59,10 @@ def convert_geosite_gfwlist(txt_path):
     gfw_domain_list = []
     with open(txt_path) as f:
         for line in f:
-            gfw_domain_list.append(line.strip())
+            stripped_line = line.strip()
+            # a line starts with "#" means it's comment
+            if len(stripped_line) > 0 and stripped_line[0] != "#":
+                gfw_domain_list.append(line.strip())
     gfw_sites_rule = {
         "version": 2,
         "rules": [
