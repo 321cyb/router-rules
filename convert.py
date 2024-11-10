@@ -9,7 +9,7 @@ def convert_geoip_cn(txt_path):
     each input line has the following format: IP-CIDR,1.0.32.0/19,no-resolve
     output json has following format:
     {
-      "version": 1,
+      "version": 2,
       "rules": [
         {
           "ip_cidr": [
@@ -30,7 +30,7 @@ def convert_geoip_cn(txt_path):
                 print("Invalid line: " + line.strip())
                 exit(1)
     non_cn_ips_rule = {
-        "version": 1,
+        "version": 2,
         "rules": [
              {
                  "ip_cidr": cn_ip_list,
@@ -47,7 +47,7 @@ def convert_geosite_gfwlist(txt_path):
     each input line contains one blocked domain suffix in China,
     output json has following format:
     {
-      "version": 1,
+      "version": 2,
       "rules": [
         {
           "domain_suffix": [
@@ -61,7 +61,7 @@ def convert_geosite_gfwlist(txt_path):
         for line in f:
             gfw_domain_list.append(line.strip())
     gfw_sites_rule = {
-        "version": 1,
+        "version": 2,
         "rules": [
              {
                  "domain_suffix": gfw_domain_list,
