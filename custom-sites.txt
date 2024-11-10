@@ -1,0 +1,2 @@
+# Bitbucket.io is similar to github.io
+bitbucket.io
