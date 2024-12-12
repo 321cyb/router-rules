@@ -1,2 +1,4 @@
 # Bitbucket.io is similar to github.io
 bitbucket.io
+# This is added for Cambly Kids iPad app
+cloudfront.net
