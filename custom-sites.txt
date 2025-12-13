@@ -4,3 +4,6 @@ bitbucket.io
 cloudfront.net
 # This is to fix the Google Play app download timeout issue on Android device, seems like googleapis.cn and the actual download domains like rr2.sn-ni57rn7k.xn--ngstr-lra8j.com should match.
 googleapis.cn
+# IBKR Singapore website frequently times out, try adding interactivebrokers.com.sg so that DNS request for it goes to proxy instead of ISP
+interactivebrokers.com.sg
+ibkr.com
