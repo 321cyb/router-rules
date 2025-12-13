@@ -2,3 +2,5 @@
 bitbucket.io
 # This is added for Cambly Kids iPad app
 cloudfront.net
+# This is to fix the Google Play app download timeout issue on Android device, seems like googleapis.cn and the actual download domains like rr2.sn-ni57rn7k.xn--ngstr-lra8j.com should match.
+googleapis.cn
