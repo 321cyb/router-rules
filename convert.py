@@ -6,7 +6,7 @@ import json
 def convert_geoip_cn(txt_path):
     """
     Convert a geoip text file to JSON format.
-    each input line has the following format: IP-CIDR,1.0.32.0/19,no-resolve
+    each input line has the following format: IP-CIDR,1.0.32.0/19
     output json has following format:
     {
       "version": 2,
@@ -22,7 +22,7 @@ def convert_geoip_cn(txt_path):
     cn_ip_list = []
     with open(txt_path) as f:
         for line in f:
-            ip_matcher = re.compile(r'(IP-CIDR6?,)(.+)(,no-resolve)')
+            ip_matcher = re.compile(r'(IP-CIDR6?,)(.+)')
             match_result = ip_matcher.search(line.strip())
             if match_result:
                 cn_ip_list.append(match_result.group(2))
